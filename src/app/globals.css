@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF8F4;          /* Warm buttery cream */
+  --foreground: #1C1712;          /* Deep espresso, warm not cold */
+  --color-beige: #F0EAE0;        /* Peanut shell beige */
+  --color-beige-deep: #E4DAC8;   /* Deeper beige for contrast */
+  --color-brown: #B8652A;        /* Terracotta peanut brown */
+  --color-brown-dark: #8A4419;   /* Deep press state */
+  --color-gold: #D4A44C;         /* Warm amber gold */
+  --color-muted: #7A6E64;        /* Restrained body text */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-beige: var(--color-beige);
+  --color-beige-deep: var(--color-beige-deep);
+  --color-brown: var(--color-brown);
+  --color-brown-dark: var(--color-brown-dark);
+  --color-gold: var(--color-gold);
+  --color-muted: var(--color-muted);
+  
+  /* Aliases to support existing bg-color-* and text-color-* classes */
+  --color-color-beige: var(--color-beige);
+  --color-color-beige-deep: var(--color-beige-deep);
+  --color-color-brown: var(--color-brown);
+  --color-color-brown-dark: var(--color-brown-dark);
+  --color-color-gold: var(--color-gold);
+  --color-color-muted: var(--color-muted);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── NOZZLE BRAND GEOMETRY ──────────────────────────── */
+/* Pill / nozzle-tip shaped element utility */
+.nozzle-pill {
+  border-radius: 9999px;
+}
+
+/* Tapered nozzle shape for dividers & accents */
+.nozzle-taper {
+  clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+/* Squeeze-flow gradient overlay */
+.squeeze-gradient {
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, var(--color-beige) 0%, transparent 70%);
+}
+
+/* ─── SUBTLE ORGANIC TEXTURE ─────────────────────────── */
+.texture-overlay {
+  isolation: isolate; /* creates stacking context without z-index issues */
+}
+.texture-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;  /* CRITICAL: never block touches */
+  z-index: 0;            /* FIXED: was 1, now 0 - never above content */
+  mix-blend-mode: multiply;
+  border-radius: inherit;
+}
+
+/* ─── NOZZLE SECTION DIVIDER ─────────────────────────── */
+.divider-nozzle {
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-brown), transparent);
+  border-radius: 9999px;
+  margin: 0 auto;
+}
+
+/* ─── PREMIUM SHADOW SYSTEM ──────────────────────────── */
+/* Soft contact shadow for floating products */
+.shadow-product {
+  filter: drop-shadow(0 32px 48px rgba(28, 23, 18, 0.12)) drop-shadow(0 8px 16px rgba(28, 23, 18, 0.06));
+}
+
+.shadow-product-sm {
+  filter: drop-shadow(0 16px 24px rgba(28, 23, 18, 0.10)) drop-shadow(0 4px 8px rgba(28, 23, 18, 0.05));
+}
+
+/* ─── SMOOTH SCROLLBAR ───────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── PREMIUM FORM INPUTS ────────────────────────────── */
+.input-premium {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.9);
+  border: 1.5px solid transparent;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.input-premium:focus {
+  border-color: var(--color-brown);
+  box-shadow: 0 0 0 4px rgba(184, 101, 42, 0.08);
+}
+
+/* ─── BUTTON BASE ────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: var(--color-brown);
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(184, 101, 42, 0.25), 0 1px 3px rgba(184, 101, 42, 0.15);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:hover {
+  background: var(--color-brown-dark);
+  box-shadow: 0 8px 24px rgba(184, 101, 42, 0.30);
+}
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  background: var(--color-beige);
+  color: var(--color-foreground);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-secondary:hover { background: var(--color-beige-deep); }
+.btn-secondary:active { transform: scale(0.97); }
+
+/* ─── EYEBROW LABEL ──────────────────────────────────── */
+.eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brown);
+}
