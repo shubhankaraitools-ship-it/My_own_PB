@@ -61,9 +61,9 @@ export default function Navbar() {
               <Image
                 src="/images/logo.png"
                 alt="my own peanut butter"
-                width={120}
-                height={40}
-                className="object-contain h-8 sm:h-10 w-auto"
+                width={180}
+                height={55}
+                className="object-contain h-11 sm:h-14 w-auto"
                 priority
               />
             </Link>

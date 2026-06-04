@@ -88,17 +88,19 @@ export default function HeroSection() {
           <div className="shrink-0 w-[110px] h-[150px] relative mt-2">
             {/* Warm pill glow */}
             <div
-              className="absolute inset-[5%] bg-gradient-to-b from-[#F0E0C8] to-[#F8EEE4] opacity-80"
+              className="absolute inset-[5%] bg-gradient-to-b from-[#F0E0C8] to-[#F8EEE4] opacity-80 animate-blob"
               style={{ borderRadius: "50% 50% 48% 48% / 60% 60% 40% 40%" }}
             />
-            <Image
-              src="/images/hero_product_nozzle_squeeze.png"
-              alt="Squeeze nozzle product"
-              fill
-              className="object-contain relative z-10 drop-shadow-lg"
-              priority
-              sizes="110px"
-            />
+            <div className="animate-float relative z-10 w-full h-full">
+              <Image
+                src="/images/flow_creamy.png"
+                alt="Squeeze nozzle product"
+                fill
+                className="object-contain drop-shadow-lg"
+                priority
+                sizes="110px"
+              />
+            </div>
           </div>
         </div>
 
@@ -236,21 +238,22 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Product image column */}
             <div className="col-span-7 order-2 flex items-center justify-center min-h-[500px] h-full relative z-10">
               <div className="relative w-[75%] max-w-[460px] aspect-[3/4]">
                 <div
-                  className="absolute inset-0 scale-110 bg-gradient-to-b from-[#F0E0C8] to-[#F8EEE4] opacity-70"
+                  className="absolute inset-0 scale-110 bg-gradient-to-b from-[#F0E0C8] to-[#F8EEE4] opacity-70 animate-blob"
                   style={{ borderRadius: "50% 50% 48% 48% / 60% 60% 40% 40%" }}
                 />
-                <Image
-                  src="/images/hero_product_nozzle_squeeze.png"
-                  alt="My Own Peanut Butter Squeeze Nozzle"
-                  fill
-                  className="object-contain relative z-10"
-                  priority
-                  sizes="45vw"
-                />
+                <div className="animate-float absolute inset-0 z-10">
+                  <Image
+                    src="/images/flow_creamy.png"
+                    alt="My Own Peanut Butter Squeeze Nozzle"
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="45vw"
+                  />
+                </div>
               </div>
             </div>
           </div>

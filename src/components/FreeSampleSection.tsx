@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function FreeSampleSection() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
@@ -66,7 +67,12 @@ export default function FreeSampleSection() {
 
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Form side */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h2 className="text-3xl sm:text-5xl font-medium tracking-tight leading-tight mb-4">
               Try it before<br />
               <span className="font-serif font-normal text-brown">you commit.</span>
@@ -117,18 +123,26 @@ export default function FreeSampleSection() {
                 <p className="text-[11px] text-color-muted text-center">No spam. We'll only contact you about your sample.</p>
               </form>
             )}
-          </div>
+          </motion.div>
 
           {/* Product image */}
-          <div className="hidden lg:block relative w-full aspect-square rounded-3xl overflow-hidden bg-white">
-            <Image
-              src="/images/travel_pack.png"
-              alt="Free Sample Travel Pack"
-              fill
-              className="object-contain p-8"
-              sizes="40vw"
-            />
-          </div>
+          <motion.div
+            className="hidden lg:block relative w-full aspect-square rounded-3xl overflow-hidden bg-white"
+            initial={{ opacity: 0, scale: 0.9, y: 24 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="animate-float absolute inset-0">
+              <Image
+                src="/images/go_dark_chocolate.png"
+                alt="Free Sample Travel Pack"
+                fill
+                className="object-contain p-8"
+                sizes="40vw"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -11,9 +11,9 @@ export default function Footer() {
             <Image
               src="/images/logo.png"
               alt="my own peanut butter"
-              width={160}
-              height={50}
-              className="object-contain h-10 w-auto brightness-0 invert"
+              width={200}
+              height={60}
+              className="object-contain h-13 sm:h-16 w-auto brightness-0 invert"
             />
             <p className="text-background/60 max-w-sm leading-relaxed font-light text-lg">
               No spoon. No mess. A modern peanut butter brand designed for convenience,
